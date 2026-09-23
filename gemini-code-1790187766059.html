@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İstanbul İl Emniyet Müdürlüğü</title>
+  <style>
+    :root {
+      --primary: #0a192f;
+      --secondary: #172a45;
+      --accent: #1e3a8a;
+      --gold: #d97706;
+      --text: #f8fafc;
+      --text-dim: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--primary);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Header & Nav */
+    header {
+      background-color: var(--secondary);
+      border-bottom: 3px solid var(--gold);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
+
+    .title-text h1 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .title-text p {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .nav-btn {
+      background-color: var(--gold);
+      color: #000;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.3s, transform 0.2s;
+      font-size: 0.85rem;
+    }
+
+    .nav-btn-mudur {
+      background-color: #dc2626;
+      color: #fff;
+    }
+
+    .nav-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.95)), 
+                  radial-gradient(circle at center, #1e3a8a 0%, #0a192f 100%);
+      padding: 70px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 15px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px rgba(217, 119, 6, 0.5));
+    }
+
+    .hero h2 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto 25px;
+      color: var(--text-dim);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: var(--gold);
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: opacity 0.3s, transform 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-secondary {
+      background-color: #2563eb;
+      color: #fff;
+    }
+
+    .btn-danger {
+      background-color: #dc2626;
+      color: #fff;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* Content Cards */
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      border-left: 4px solid var(--gold);
+      padding-left: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: var(--secondary);
+      border-radius: 8px;
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .birim-card {
+      cursor: pointer;
+    }
+
+    .birim-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+
+    .card h3 {
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
+
+    .click-hint {
+      display: inline-block;
+      margin-top: 15px;
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+
+    /* Modal Genel Yapı */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: var(--secondary);
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      max-width: 550px;
+      width: 100%;
+      padding: 30px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: #fff;
+    }
+
+    /* Panel Modalleri Tasarımı */
+    .panel-modal-content {
+      width: 550px;
+      max-width: 95%;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--secondary);
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    .panel-form label {
+      display: block;
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .panel-form input, .panel-form select, .panel-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      background: var(--primary);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    /* Kadro Bölümü */
+    .kadro-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .kadro-item {
+      background-color: var(--secondary);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 5px solid var(--gold);
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.2s;
+    }
+
+    .kadro-item-active {
+      cursor: pointer;
+    }
+
+    .kadro-item-active:hover {
+      background-color: #1e3a8a;
+    }
+
+    .kadro-title {
+      color: #fff;
+    }
+
+    .officer-name {
+      color: var(--gold);
+      font-weight: bold;
+      background: rgba(217, 119, 6, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      font-size: 0.9rem;
+    }
+
+    /* Sicil Kartı Detay Görünümü */
+    .sicil-item {
+      background: var(--primary);
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .sicil-item strong {
+      color: var(--gold);
+      display: inline-block;
+      width: 140px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 5px;
+    }
+
+    .tag-cert {
+      background: #166534;
+      color: #86efac;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .tag-penalty {
+      background: #991b1b;
+      color: #fca5a5;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* Admin Panels */
+    .admin-panel {
+      background-color: var(--secondary);
+      border: 2px dashed var(--gold);
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+
+    .admin-panel input, .admin-panel textarea, .admin-panel select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: var(--primary);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #050c1a;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/EGM_Amblemi.png/600px-EGM_Amblemi.png" alt="EGM Logo" class="header-logo">
+      <div class="title-text">
+        <h1>İstanbul İl Emniyet Müdürlüğü</h1>
+        <p>Huzur ve Güven Şehri İstanbul</p>
+      </div>
+    </div>
+    <div class="nav-container">
+      <nav>
+        <ul>
+          <li><a href="#anasayfa">Ana Sayfa</a></li>
+          <li><a href="#birimler">Birimler</a></li>
+          <li><a href="#duyurular">Duyurular</a></li>
+          <li><a href="#kadro">Kadro</a></li>
+          <li><a href="https://discord.gg/mGDgmvz6ZK" target="_blank">İletişim & Discord</a></li>
+        </ul>
+      </nav>
+      <!-- Panel Butonları -->
+      <button class="nav-btn" onclick="modalAc('personelModal')">Personel Girişi</button>
+      <button class="nav-btn nav-btn-mudur" onclick="modalAc('mudurModal')">Müdür Paneli</button>
+    </div>
+  </header>
+
+  <section class="hero" id="anasayfa">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/EGM_Amblemi.png/600px-EGM_Amblemi.png" alt="EGM Logo" class="hero-logo">
+    <h2>İstanbul İl Emniyet Müdürlüğü</h2>
+    <p>7/24 kesintisiz kamu düzeni, asayiş ve güvenlik hizmetleri ile İstanbul halkının hizmetindeyiz.</p>
+    <div class="btn-group">
+      <a href="https://discord.gg/mGDgmvz6ZK" target="_blank" class="btn">İhbar & İletişim</a>
+      <a href="https://discord.gg/mGDgmvz6ZK" target="_blank" class="btn btn-secondary">Başvuru Yap</a>
+    </div>
+  </section>
+
+  <!-- Birimler -->
+  <div class="container" id="birimler">
+    <h2 class="section-title">Operasyonel ve İdari Birimler</h2>
+    <div class="grid" id="birimContainer">
+      <!-- Birimler JavaScript ile dinamik gelecek -->
+    </div>
+
+    <!-- Birim Yönetim Paneli (Şifreli) -->
+    <div class="admin-panel">
+      <h3 style="color: var(--gold); margin-bottom: 10px;">Birim Düzenleme Paneli</h3>
+      <input type="password" id="birimAdminPassword" placeholder="Yönetici Şifrenizi Girin">
+      
+      <div id="birimAdminForm" style="display:none; margin-top: 10px;">
+        <label style="color: var(--gold); font-size: 0.9rem; margin-bottom: 5px; display:block;">Düzenlenecek Birimi Seçin:</label>
+        <select id="selectBirim" onchange="birimFormuDoldur()">
+          <!-- Birimler JavaScript ile dolacak -->
+        </select>
+        
+        <input type="text" id="editBirimAciklama" placeholder="Birim Açıklaması">
+        <input type="text" id="editBirimAmiri" placeholder="Birim Amiri">
+        <input type="text" id="editDiscordSorumlu" placeholder="Discord Sorumlusu (Örn: @kullanici)">
+        <input type="text" id="editAlimDurumu" placeholder="Alım Durumu (Örn: Aktif / Açık)">
+        
+        <button onclick="birimGuncelle()" class="btn" style="cursor:pointer; width:100%;">Birim Bilgilerini Kaydet</button>
+      </div>
+      <p id="birimAuthMessage" style="color: var(--text-dim); font-size: 0.85rem; margin-top: 5px;">Paneli açmak için şifrenizi girin.</p>
+    </div>
+  </div>
+
+  <!-- Birim Detay Modali -->
+  <div class="modal" id="birimModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="modalKapat('birimModal')">&times;</button>
+      <div class="modal-header">
+        <h3 id="modalBirimAd" style="color:var(--gold); font-size:1.5rem; margin-bottom:15px;">Birim Adı</h3>
+      </div>
+      <p id="modalBirimAciklama">Birim açıklaması buraya gelecek.</p>
+      <div style="margin-top:15px; display:flex; flex-direction:column; gap:10px;">
+        <div style="background:var(--primary); padding:10px 15px; border-radius:5px;">
+          <strong style="color:var(--gold);">Birim Amiri:</strong> <span id="modalBirimAmiri">-</span>
+        </div>
+        <div style="background:var(--primary); padding:10px 15px; border-radius:5px;">
+          <strong style="color:var(--gold);">Discord Sorumlusu:</strong> <span id="modalDiscordSorumlu">-</span>
+        </div>
+        <div style="background:var(--primary); padding:10px 15px; border-radius:5px;">
+          <strong style="color:var(--gold);">Alım Durumu:</strong> <span id="modalAlimDurumu">-</span>
+        </div>
+      </div>
+      <div style="margin-top:20px; text-align:right;">
+        <a href="https://discord.gg/mGDgmvz6ZK" target="_blank" class="btn" style="font-size:0.85rem; padding:8px 16px;">Birime Başvur</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSONEL SİCİL KARTI MODALİ (Kadroya Tıklandığında Açılır) -->
+  <div class="modal" id="personelKartModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="modalKapat('personelKartModal')">&times;</button>
+      <h3 style="color:var(--gold); text-align:center; margin-bottom:20px; border-bottom:2px solid var(--gold); padding-bottom:10px;">EGM PERSONEL SİCİL DOSYASI</h3>
+      
+      <div class="sicil-item">
+        <strong>İsim Soyisim:</strong> <span id="kartAdSoyad" style="color:#fff;">-</span>
+      </div>
+      <div class="sicil-item">
+        <strong>Sicil Numarası:</strong> <span id="kartSicil" style="color:var(--gold); font-weight:bold;">-</span>
+      </div>
+      <div class="sicil-item">
+        <strong>Rütbesi:</strong> <span id="kartRutbe" style="color:#fff;">-</span>
+      </div>
+      <div class="sicil-item">
+        <strong>Roblox Hesap ID:</strong> <span id="kartRobloxId" style="color:#60a5fa; font-weight:bold;">-</span>
+      </div>
+      
+      <div class="sicil-item">
+        <strong>Sertifikalar:</strong>
+        <div id="kartSertifikalar" class="tag-list">
+          <!-- JS ile Dolacak -->
+        </div>
+      </div>
+
+      <div class="sicil-item">
+        <strong>Ceza & Disiplin:</strong>
+        <div id="kartCezalar" class="tag-list">
+          <!-- JS ile Dolacak -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSONEL PANELİ MODALİ -->
+  <div class="modal" id="personelModal">
+    <div class="panel-modal-content">
+      <button class="modal-close" onclick="modalKapat('personelModal')">&times;</button>
+      <h3 style="color:var(--gold); text-align:center; margin-bottom:20px; border-bottom: 2px solid var(--gold); padding-bottom:10px;">PERSONEL PANELİ</h3>
+      
+      <div class="panel-form">
+        <label>Personel Adı Soyadı:</label>
+        <input type="text" id="personelAdSoyad" placeholder="Adınızı ve Soyadınızı Girin">
+
+        <label>Şifre:</label>
+        <input type="password" id="personelSifre" placeholder="Personel Şifresi">
+
+        <button onclick="personelGirisYap()" class="btn" style="width:100%;">Giriş Yap</button>
+        <p id="personelMesaj" style="text-align:center; font-size:0.85rem; margin-top:10px; color:var(--text-dim);"></p>
+      </div>
+
+      <div id="personelIcerik" style="display:none; margin-top:20px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top:20px;" class="panel-form">
+        <h4 style="color:var(--gold); text-align:center; margin-bottom:15px;">İşlem ve Talep Formu</h4>
+        
+        <label>İşlem Türü Seçin:</label>
+        <select id="talepTuru">
+          <option value="Eğitim Talebi">Eğitim Talebi</option>
+          <option value="Şikayet">Şikayet</option>
+          <option value="İstek ve Öneri">İstek ve Öneri</option>
+        </select>
+
+        <label>Konu / Başlık:</label>
+        <input type="text" id="talepBaslik" placeholder="Kısaca bahsettiğiniz konu...">
+
+        <label>Detaylı Açıklama:</label>
+        <textarea id="talepDetay" rows="4" placeholder="Mesajınızı buraya yazınız..."></textarea>
+
+        <button onclick="talepGonder()" class="btn btn-secondary" style="width:100%;">Talebi Gönder</button>
+        <p id="talepMesaj" style="text-align:center; font-size:0.85rem; margin-top:10px;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÜDÜR PANELİ MODALİ -->
+  <div class="modal" id="mudurModal">
+    <div class="panel-modal-content" style="border-color: #dc2626;">
+      <button class="modal-close" onclick="modalKapat('mudurModal')">&times;</button>
+      <h3 style="color:#dc2626; text-align:center; margin-bottom:20px; border-bottom: 2px solid #dc2626; padding-bottom:10px;">EMNİYET MÜDÜRÜ PANELİ</h3>
+      
+      <div class="panel-form">
+        <label style="color:#dc2626;">Müdür Giriş Şifresi:</label>
+        <input type="password" id="mudurSifre" placeholder="Müdür Yetkili Şifresi">
+
+        <button onclick="mudurGirisYap()" class="btn btn-danger" style="width:100%;">Müdür Girişi Yap</button>
+        <p id="mudurMesaj" style="text-align:center; font-size:0.85rem; margin-top:10px; color:var(--text-dim);"></p>
+      </div>
+
+      <!-- MÜDÜR ÖZEL İŞLEM ALANI -->
+      <div id="mudurIcerik" style="display:none; margin-top:20px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top:20px;" class="panel-form">
+        
+        <!-- PERSONEL RÜTBE & KAYIT -->
+        <h4 style="color:var(--gold); text-align:center; margin-bottom:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;">Personel Kayıt & Rütbe Atama</h4>
+        <label>Personel Adı Soyadı:</label>
+        <input type="text" id="terfiPersonelAd" placeholder="Örn: Semih KILIÇ">
+
+        <label>Roblox Hesabı ID / Kullanıcı Adı:</label>
+        <input type="text" id="terfiRobloxId" placeholder="Örn: semihkomiser (#1234567)">
+        
+        <label>Atanacağı Rütbe:</label>
+        <select id="terfiRutbeSecim">
+          <!-- JS ile Dolacak -->
+        </select>
+        
+        <button onclick="personelTerfiEttir()" class="btn" style="width:100%; margin-bottom:25px; background-color:#22c55e; color:#000;">Personeli Kadroya Kaydet / Güncelle</button>
+        <p id="terfiMesaj" style="text-align:center; font-size:0.85rem; margin-bottom:20px;"></p>
+
+        <!-- SERTİFİKA VERME ALANI -->
+        <h4 style="color:#22c55e; text-align:center; margin-bottom:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;">Sertifika Ekleme & Tanımlama</h4>
+        
+        <label>Sertifika Verilecek Personel:</label>
+        <select id="sertifikaPersonelSecim">
+          <!-- JS ile Dolacak -->
+        </select>
+
+        <label>Verilecek Sertifika Türü:</label>
+        <select id="sertifikaTuru">
+          <option value="Polis Atış Takip Bilgi Sistemi">Polis Atış Takip Bilgi Sistemi</option>
+          <option value="İlk Yardım Sertifikası">İlk Yardım Sertifikası</option>
+        </select>
+
+        <button onclick="sertifikaEkle()" class="btn" style="width:100%; margin-bottom:25px; background-color:#166534; color:#fff;">Sertifika Ver</button>
+        <p id="sertifikaMesaj" style="text-align:center; font-size:0.85rem; margin-bottom:20px;"></p>
+
+        <!-- DİSİPLİN VE İHRAÇ -->
+        <h4 style="color:#dc2626; text-align:center; margin-bottom:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;">Disiplin ve Soruşturma</h4>
+        
+        <label>İşlem Tipi:</label>
+        <select id="mudurIslemTipi">
+          <option value="Disiplin Soruşturması">Disiplin Soruşturması Başlat</option>
+          <option value="Personel Tenzili">Personel Tenzili / İhraç</option>
+        </select>
+
+        <label>İşlem Yapılacak Personel Adı & Sicil:</label>
+        <input type="text" id="mudurHedefPersonel" placeholder="Örn: Semih KILIÇ">
+
+        <label>İşlem Gerekçesi / Soruşturma Maddesi:</label>
+        <textarea id="mudurGerekce" rows="3" placeholder="Soruşturma veya ceza gerekçesini detaylı yazınız..."></textarea>
+
+        <button onclick="mudurIslemiOnayla()" class="btn btn-danger" style="width:100%;">Kararı İşleme Al ve Yayınla</button>
+        <p id="mudurIslemMesaj" style="text-align:center; font-size:0.85rem; margin-top:10px;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Duyurular -->
+  <div class="container" id="duyurular">
+    <h2 class="section-title">Son Duyurular</h2>
+    <div class="grid" id="duyuruContainer">
+      <!-- Dynamic Duyurular -->
+    </div>
+
+    <!-- Duyuru Yönetim Paneli -->
+    <div class="admin-panel">
+      <h3 style="color: var(--gold); margin-bottom: 10px;">Duyuru Yönetim Paneli</h3>
+      <input type="password" id="adminPassword" placeholder="Yönetici Şifrenizi Girin">
+      <div id="adminForm" style="display:none; margin-top: 10px;">
+        <input type="text" id="duyuruBaslik" placeholder="Duyuru Başlığı">
+        <textarea id="duyuruIcerik" placeholder="Duyuru İçeriği..." rows="3"></textarea>
+        <button onclick="duyuruEkle()" class="btn" style="cursor:pointer;">Duyuru Yayınla</button>
+      </div>
+      <p id="authMessage" style="color: var(--text-dim); font-size: 0.85rem; margin-top: 5px;">Paneli açmak için şifrenizi girin.</p>
+    </div>
+  </div>
+
+  <!-- Kadro -->
+  <div class="container" id="kadro">
+    <h2 class="section-title">Emniyet Kadrosu ve Rütbeler <span style="font-size:0.8rem; font-weight:normal; color:var(--text-dim);">(Personel detayları için isme tıklayın)</span></h2>
+    <ul class="kadro-list" id="kadroListesi">
+      <!-- JavaScript ile dinamik render edilecek -->
+    </ul>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 İstanbul İl Emniyet Müdürlüğü - Tüm Hakları Saklıdır.</p>
+  </footer>
+
+  <script>
+    // --- ŞİFRELER ---
+    const SIFRE_MUDUR = "ataegmyonetimpaneli";
+    const SIFRE_PERSONEL = "atapersonelgiris";
+    const SIFRE_BIRIM = "ataegmbirimler";
+    const SIFRE_DUYURU = "ataegmduyuruat";
+
+    // --- KADRO VERİ YAPISI ---
+    const defaultKadro = [
+      { id: 1, rutbe: "İl Emniyet Müdürü (1. Sınıf)", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 2, rutbe: "Emniyet Müdür Yardımcısı (2. Sınıf)", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 3, rutbe: "3. Sınıf Emniyet Müdürü", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 4, rutbe: "4. Sınıf Emniyet Müdürü", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 5, rutbe: "Emniyet Amiri", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 6, rutbe: "Başkomiser", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 7, rutbe: "Başkomiser", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 8, rutbe: "Komiser", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 9, rutbe: "Komiser", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 10, rutbe: "Komiser Yardımcısı", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 11, rutbe: "Komiser Yardımcısı", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 12, rutbe: "Komiser Yardımcısı", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 13, rutbe: "Kıdemli Başpolis", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 14, rutbe: "Kıdemli Başpolis", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 15, rutbe: "Kıdemli Başpolis", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 16, rutbe: "Kıdemli Başpolis", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 17, rutbe: "Başpolis", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 18, rutbe: "Başpolis", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 19, rutbe: "Başpolis", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 20, rutbe: "Başpolis", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 21, rutbe: "Başpolis", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 22, rutbe: "Polis Memuru", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 23, rutbe: "Polis Memuru", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 24, rutbe: "Polis Memuru", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 25, rutbe: "Polis Memuru", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 26, rutbe: "Polis Memuru", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 27, rutbe: "Polis Memuru", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 28, rutbe: "Polis Memuru", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 29, rutbe: "Polis Memuru", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 30, rutbe: "Polis Memuru", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] },
+      { id: 31, rutbe: "Polis Memuru", isim: "Atanmadı", robloxId: "-", sicil: "-", sertifikalar: [], cezalar: [] }
+    ];
+
+    let kadro = JSON.parse(localStorage.getItem('egm_kadro')) || defaultKadro;
+
+    function renderKadro() {
+      const list = document.getElementById('kadroListesi');
+      const terfiSelect = document.getElementById('terfiRutbeSecim');
+      const sertifikaPersonelSelect = document.getElementById('sertifikaPersonelSecim');
+      
+      list.innerHTML = '';
+      if(terfiSelect) terfiSelect.innerHTML = '';
+      if(sertifikaPersonelSelect) sertifikaPersonelSelect.innerHTML = '';
+
+      kadro.forEach((item) => {
+        const isAssigned = item.isim !== "Atanmadı";
+        
+        // Kadro Listesi HTML
+        const li = document.createElement('li');
+        li.className = `kadro-item ${isAssigned ? 'kadro-item-active' : ''}`;
+        if(isAssigned) {
+          li.onclick = () => personelKartGoster(item.id);
+        }
+        li.innerHTML = `
+          <span class="kadro-title">${item.rutbe}</span>
+          <span class="officer-name">${item.isim} ${isAssigned && item.sicil !== '-' ? `(${item.sicil})` : ''}</span>
+        `;
+        list.appendChild(li);
+
+        // Müdür Paneli Rütbe Seçimi Select
+        if(terfiSelect) {
+          const opt = document.createElement('option');
+          opt.value = item.id;
+          opt.innerText = `[Slot ${item.id}] ${item.rutbe} (${item.isim})`;
+          terfiSelect.appendChild(opt);
+        }
+
+        // Sertifika Paneli Personel Select
+        if(sertifikaPersonelSelect && isAssigned) {
+          const opt = document.createElement('option');
+          opt.value = item.id;
+          opt.innerText = `${item.isim} (${item.rutbe})`;
+          sertifikaPersonelSelect.appendChild(opt);
+        }
+      });
+    }
+
+    // --- PERSONEL KAYIT & TERFİ ---
+    function personelTerfiEttir() {
+      const ad = document.getElementById('terfiPersonelAd').value.trim();
+      const robloxId = document.getElementById('terfiRobloxId').value.trim() || "-";
+      const slotId = parseInt(document.getElementById('terfiRutbeSecim').value);
+      const mesaj = document.getElementById('terfiMesaj');
+
+      if (!ad) {
+        mesaj.innerText = "Lütfen personel adını girin!";
+        mesaj.style.color = "#ef4444";
+        return;
+      }
+
+      let eskiSertifikalar = [];
+      let eskiCezalar = [];
+      let eskiSicil = "#" + Math.floor(1000 + Math.random() * 9000);
+
+      // Eski yerini temizle
+      kadro.forEach((item) => {
+        if (item.isim.toLowerCase() === ad.toLowerCase()) {
+          eskiSertifikalar = item.sertifikalar || [];
+          eskiCezalar = item.cezalar || [];
+          if(item.sicil !== "-") eskiSicil = item.sicil;
+          
+          item.isim = "Atanmadı";
+          item.robloxId = "-";
+          item.sicil = "-";
+          item.sertifikalar = [];
+          item.cezalar = [];
+        }
+      });
+
+      // Yeni makamına ata
+      const yeniMakam = kadro.find(item => item.id === slotId);
+      if (yeniMakam) {
+        yeniMakam.isim = ad;
+        yeniMakam.robloxId = robloxId;
+        yeniMakam.sicil = eskiSicil;
+        yeniMakam.sertifikalar = eskiSertifikalar;
+        yeniMakam.cezalar = eskiCezalar;
+
+        localStorage.setItem('egm_kadro', JSON.stringify(kadro));
+        renderKadro();
+
+        mesaj.innerText = `${ad} kadroya kaydedildi/terfi ettirildi! (${yeniMakam.rutbe})`;
+        mesaj.style.color = "#22c55e";
+        document.getElementById('terfiPersonelAd').value = '';
+        document.getElementById('terfiRobloxId').value = '';
+      }
+    }
+
+    // --- SERTİFİKA EKLEME ---
+    function sertifikaEkle() {
+      const slotId = parseInt(document.getElementById('sertifikaPersonelSecim').value);
+      const sertifikaAd = document.getElementById('sertifikaTuru').value;
+      const mesaj = document.getElementById('sertifikaMesaj');
+
+      const hedef = kadro.find(i => i.id === slotId);
+      if(!hedef || hedef.isim === "Atanmadı") {
+        mesaj.innerText = "Lütfen geçerli bir personel seçin!";
+        mesaj.style.color = "#ef4444";
+        return;
+      }
+
+      if(!hedef.sertifikalar) hedef.sertifikalar = [];
+
+      if(hedef.sertifikalar.includes(sertifikaAd)) {
+        mesaj.innerText = "Bu personel zaten bu sertifikaya sahip!";
+        mesaj.style.color = "#ef4444";
+        return;
+      }
+
+      hedef.sertifikalar.push(sertifikaAd);
+      localStorage.setItem('egm_kadro', JSON.stringify(kadro));
+      renderKadro();
+
+      mesaj.innerText = `${hedef.isim} isimli personele "${sertifikaAd}" başarıyla eklendi!`;
+      mesaj.style.color = "#22c55e";
+    }
+
+    // --- PERSONEL KARTINI GÖSTER ---
+    function personelKartGoster(slotId) {
+      const p = kadro.find(i => i.id === slotId);
+      if(!p || p.isim === "Atanmadı") return;
+
+      document.getElementById('kartAdSoyad').innerText = p.isim;
+      document.getElementById('kartSicil').innerText = p.sicil;
+      document.getElementById('kartRutbe').innerText = p.rutbe;
+      document.getElementById('kartRobloxId').innerText = p.robloxId;
+
+      // Sertifikalar
+      const certBox = document.getElementById('kartSertifikalar');
+      certBox.innerHTML = '';
+      if(p.sertifikalar && p.sertifikalar.length > 0) {
+        p.sertifikalar.forEach(s => {
+          certBox.innerHTML += `<span class="tag-cert">${s}</span>`;
+        });
+      } else {
+        certBox.innerHTML = '<span style="color:var(--text-dim); font-size:0.85rem;">Sertifika Yok</span>';
+      }
+
+      // Cezalar
+      const penaltyBox = document.getElementById('kartCezalar');
+      penaltyBox.innerHTML = '';
+      if(p.cezalar && p.cezalar.length > 0) {
+        p.cezalar.forEach(c => {
+          penaltyBox.innerHTML += `<span class="tag-penalty">${c}</span>`;
+        });
+      } else {
+        penaltyBox.innerHTML = '<span style="color:var(--text-dim); font-size:0.85rem;">Temiz / Ceza Yok</span>';
+      }
+
+      modalAc('personelKartModal');
+    }
+
+    // --- GENEL MODAL FONKSİYONLARI ---
+    function modalAc(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
+    }
+
+    function modalKapat(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const birimModal = document.getElementById('birimModal');
+      const personelModal = document.getElementById('personelModal');
+      const mudurModal = document.getElementById('mudurModal');
+      const personelKartModal = document.getElementById('personelKartModal');
+
+      if (event.target == birimModal) birimModal.style.display = 'none';
+      if (event.target == personelModal) personelModal.style.display = 'none';
+      if (event.target == mudurModal) mudurModal.style.display = 'none';
+      if (event.target == personelKartModal) personelKartModal.style.display = 'none';
+    }
+
+    // --- PERSONEL PANELİ FONKSİYONLARI ---
+    function personelGirisYap() {
+      const adSoyad = document.getElementById('personelAdSoyad').value.trim();
+      const sifre = document.getElementById('personelSifre').value;
+      const mesaj = document.getElementById('personelMesaj');
+      const icerik = document.getElementById('personelIcerik');
+
+      if (!adSoyad) {
+        mesaj.innerText = "Lütfen Ad Soyad alanını doldurun!";
+        mesaj.style.color = "#ef4444";
+        return;
+      }
+
+      if (sifre === SIFRE_PERSONEL) {
+        mesaj.innerText = "Giriş Başarılı! Hoş geldiniz, " + adSoyad;
+        mesaj.style.color = "#22c55e";
+        icerik.style.display = "block";
+      } else {
+        mesaj.innerText = "Hatalı şifre!";
+        mesaj.style.color = "#ef4444";
+        icerik.style.display = "none";
+      }
+    }
+
+    function talepGonder() {
+      const tur = document.getElementById('talepTuru').value;
+      const baslik = document.getElementById('talepBaslik').value.trim();
+      const detay = document.getElementById('talepDetay').value.trim();
+      const talepMesaj = document.getElementById('talepMesaj');
+
+      if (!baslik || !detay) {
+        talepMesaj.innerText = "Lütfen başlık ve detay alanlarını eksiksiz doldurun!";
+        talepMesaj.style.color = "#ef4444";
+        return;
+      }
+
+      talepMesaj.innerText = tur + " talebiniz başarıyla iletilmiştir.";
+      talepMesaj.style.color = "#22c55e";
+
+      document.getElementById('talepBaslik').value = '';
+      document.getElementById('talepDetay').value = '';
+    }
+
+    // --- MÜDÜR PANELİ FONKSİYONLARI ---
+    function mudurGirisYap() {
+      const sifre = document.getElementById('mudurSifre').value;
+      const mesaj = document.getElementById('mudurMesaj');
+      const icerik = document.getElementById('mudurIcerik');
+
+      if (sifre === SIFRE_MUDUR) {
+        mesaj.innerText = "Müdür Yetkisi Doğrulandı!";
+        mesaj.style.color = "#22c55e";
+        icerik.style.display = "block";
+        renderKadro();
+      } else {
+        mesaj.innerText = "Yetkisiz Giriş! Hatalı Şifre.";
+        mesaj.style.color = "#ef4444";
+        icerik.style.display = "none";
+      }
+    }
+
+    function mudurIslemiOnayla() {
+      const tip = document.getElementById('mudurIslemTipi').value;
+      const hedef = document.getElementById('mudurHedefPersonel').value.trim();
+      const gerekce = document.getElementById('mudurGerekce').value.trim();
+      const mesaj = document.getElementById('mudurIslemMesaj');
+
+      if (!hedef || !gerekce) {
+        mesaj.innerText = "Lütfen personel bilgisini ve gerekçeyi eksiksiz doldurun!";
+        mesaj.style.color = "#ef4444";
+        return;
+      }
+
+      kadro.forEach(item => {
+        if(item.isim.toLowerCase() === hedef.toLowerCase()) {
+          if(!item.cezalar) item.cezalar = [];
+          item.cezalar.push(`${tip}: ${gerekce}`);
+        }
+      });
+      localStorage.setItem('egm_kadro', JSON.stringify(kadro));
+
+      duyurular.unshift({
+        baslik: `[MÜDÜRLÜK KARARI] ${tip}: ${hedef}`,
+        icerik: `Gerekçe: ${gerekce}`
+      });
+      localStorage.setItem('egm_duyurular', JSON.stringify(duyurular));
+      renderDuyurular();
+
+      mesaj.innerText = `${tip} işlemi başarıyla onaylandı, personele işlendi ve duyurulara eklendi.`;
+      mesaj.style.color = "#22c55e";
+
+      document.getElementById('mudurHedefPersonel').value = '';
+      document.getElementById('mudurGerekce').value = '';
+    }
+
+    // --- BİRİMLER MANTIĞI & YEREL DEPOLAMA ---
+    const defaultBirimler = [
+      { id: 1, ad: 'Asayiş Şube Müdürlüğü', aciklama: 'İl genelinde can ve mal güvenliğini sağlamak, suç işlenmesini önlemek ve failleri adalete teslim etmekle görevlidir.', amir: '1. Sınıf Emniyet Müdürü - M. Albayrak', sorumlu: '@asayis_sorumlusu', alim: 'Aktif / Açık' },
+      { id: 2, ad: 'Polis Özel Harekât (PÖH)', aciklama: 'Yüksek riskli operasyonlar, terörle mücadele ve rehin kurtarma gibi kritik görevleri başarıyla icra eder.', amir: 'Özel Harekât Şube Müdürü', sorumlu: '@poh_komutani', alim: 'Mülakat İle' },
+      { id: 3, ad: 'Çevik Kuvvet Şube Müdürlüğü', aciklama: 'Toplumsal olaylar, büyük organizasyonlar ve kamu düzeninin korunmasında aktif saha görevi üstlenir.', amir: 'Çevik Kuvvet Amiri', sorumlu: '@cevik_sorumlu', alim: 'Aktif / Açık' },
+      { id: 4, ad: 'Trafik Denetleme Şube', aciklama: 'İstanbul trafiğinin düzeni, güvenliği ve denetimleri için gece gündüz saha faaliyetlerini yürütür.', amir: 'Trafik Şube Amiri', sorumlu: '@trafik_sorumlu', alim: 'Aktif / Açık' },
+      { id: 5, ad: 'Personel Şube Müdürlüğü', aciklama: 'Emniyet teşkilatı bünyesindeki personelin özlük, atama, terfi ve idari işler sürecini yönetir.', amir: 'Personel Şube Müdürü', sorumlu: '@personel_sorumlu', alim: 'Kapalı' }
+    ];
+
+    let birimler = JSON.parse(localStorage.getItem('egm_birimler')) || defaultBirimler;
+
+    function renderBirimler() {
+      const container = document.getElementById('birimContainer');
+      const select = document.getElementById('selectBirim');
+      container.innerHTML = '';
+      select.innerHTML = '';
+
+      birimler.forEach((b) => {
+        const card = document.createElement('div');
+        card.className = 'card birim-card';
+        card.onclick = () => birimDetayGoster(b.ad, b.aciklama, b.amir, b.sorumlu, b.alim);
+        card.innerHTML = `
+          <h3>${b.ad}</h3>
+          <p>${b.aciklama}</p>
+          <span class="click-hint">Detaylar için tıklayın &rarr;</span>
+        `;
+        container.appendChild(card);
+
+        const opt = document.createElement('option');
+        opt.value = b.id;
+        opt.innerText = b.ad;
+        select.appendChild(opt);
+      });
+
+      birimFormuDoldur();
+    }
+
+    function birimFormuDoldur() {
+      const selectedId = parseInt(document.getElementById('selectBirim').value);
+      const target = birimler.find(b => b.id === selectedId);
+      if(target) {
+        document.getElementById('editBirimAciklama').value = target.aciklama;
+        document.getElementById('editBirimAmiri').value = target.amir;
+        document.getElementById('editDiscordSorumlu').value = target.sorumlu;
+        document.getElementById('editAlimDurumu').value = target.alim;
+      }
+    }
+
+    function birimGuncelle() {
+      const selectedId = parseInt(document.getElementById('selectBirim').value);
+      const target = birimler.find(b => b.id === selectedId);
+
+      if(target) {
+        target.aciklama = document.getElementById('editBirimAciklama').value;
+        target.amir = document.getElementById('editBirimAmiri').value;
+        target.sorumlu = document.getElementById('editDiscordSorumlu').value;
+        target.alim = document.getElementById('editAlimDurumu').value;
+
+        localStorage.setItem('egm_birimler', JSON.stringify(birimler));
+        renderBirimler();
+        alert('Birim bilgileri başarıyla güncellendi ve kaydedildi!');
+      }
+    }
+
+    const birimPassInput = document.getElementById('birimAdminPassword');
+    const birimAdminForm = document.getElementById('birimAdminForm');
+    const birimAuthMessage = document.getElementById('birimAuthMessage');
+
+    birimPassInput.addEventListener('input', function() {
+      if(this.value === SIFRE_BIRIM) {
+        birimAdminForm.style.display = 'block';
+        birimAuthMessage.innerText = "Şifre Doğrulandı! Birim bilgilerini güncelleyebilirsiniz.";
+        birimAuthMessage.style.color = "#22c55e";
+      } else {
+        birimAdminForm.style.display = 'none';
+        birimAuthMessage.innerText = "Hatalı veya eksik şifre!";
+        birimAuthMessage.style.color = "#ef4444";
+      }
+    });
+
+    function birimDetayGoster(ad, aciklama, amir, sorumlu, alim) {
+      document.getElementById('modalBirimAd').innerText = ad;
+      document.getElementById('modalBirimAciklama').innerText = aciklama;
+      document.getElementById('modalBirimAmiri').innerText = amir;
+      document.getElementById('modalDiscordSorumlu').innerText = sorumlu;
+      document.getElementById('modalAlimDurumu').innerText = alim;
+      document.getElementById('birimModal').style.display = 'flex';
+    }
+
+    // --- DUYURULAR MANTIĞI ---
+    const defaultDuyurular = [
+      { baslik: "Polis Akademisi Aday Başvurusu", icerik: "Polis Meslek Yüksek Okulu aday başvuruları başlamıştır. Başvuru yapmak için yukarıdaki Başvuru Yap butonunu kullanabilirsiniz." },
+      { baslik: "Kamu Düzeni ve Güvenlik Uyarısı", icerik: "Vatandaşlarımızın şüpheli durumları derhal ilgili kanallar üzerinden bildirmeleri rica olunur." }
+    ];
+
+    let duyurular = JSON.parse(localStorage.getItem('egm_duyurular')) || defaultDuyurular;
+    let isAdminUnlocked = false;
+
+    function renderDuyurular() {
+      const container = document.getElementById('duyuruContainer');
+      container.innerHTML = '';
+
+      duyurular.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          ${isAdminUnlocked ? `<button class="delete-btn" onclick="duyuruSil(${index})">Sil</button>` : ''}
+          <h3>${item.baslik}</h3>
+          <p>${item.icerik}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    const passInput = document.getElementById('adminPassword');
+    const adminForm = document.getElementById('adminForm');
+    const authMessage = document.getElementById('authMessage');
+
+    passInput.addEventListener('input', function() {
+      if(this.value === SIFRE_DUYURU) {
+        isAdminUnlocked = true;
+        adminForm.style.display = 'block';
+        authMessage.innerText = "Şifre Doğrulandı! Duyuru ekleyebilir veya silebilirsiniz.";
+        authMessage.style.color = "#22c55e";
+      } else {
+        isAdminUnlocked = false;
+        adminForm.style.display = 'none';
+        authMessage.innerText = "Hatalı veya eksik şifre!";
+        authMessage.style.color = "#ef4444";
+      }
+      renderDuyurular();
+    });
+
+    function duyuruEkle() {
+      const baslik = document.getElementById('duyuruBaslik').value;
+      const icerik = document.getElementById('duyuruIcerik').value;
+
+      if(!baslik || !icerik) {
+        alert("Lütfen başlık ve içerik alanlarını doldurun!");
+        return;
+      }
+
+      duyurular.unshift({ baslik, icerik });
+      localStorage.setItem('egm_duyurular', JSON.stringify(duyurular));
+
+      document.getElementById('duyuruBaslik').value = '';
+      document.getElementById('duyuruIcerik').value = '';
+
+      renderDuyurular();
+    }
+
+    function duyuruSil(index) {
+      duyurular.splice(index, 1);
+      localStorage.setItem('egm_duyurular', JSON.stringify(duyurular));
+      renderDuyurular();
+    }
+
+    // İlk Yüklemeler
+    renderKadro();
+    renderBirimler();
+    renderDuyurular();
+  </script>
+
+</body>
+</html>
